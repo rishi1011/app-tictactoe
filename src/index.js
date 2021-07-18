@@ -4,10 +4,50 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+class Square extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <button className="square">XX</button>
+    )
+  }
+}
+
+class Board extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Next move: X</h3>
+      <div>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div>
+        <Square />
+        <Square />
+        <Square />
+        </div>
+      </div>
+    )
+  }
+}
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Board />,
   document.getElementById('root')
 );
 
