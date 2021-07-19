@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Alert } from 'react-bootstrap';
 
 const calculateWinner = (squares) => {
   console.log(squares)
@@ -30,7 +26,7 @@ const calculateWinner = (squares) => {
 }
 
 const isGameTied = (squares) => {
-  for (let i = 0; i < squares.length; i++){
+  for (let i = 0; i < squares.length; i++) {
     if (squares[i] === null) {
       return false;
     }
@@ -46,7 +42,47 @@ const Square = (props) => {
 
 class Board extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+  }
+
+
+  renderSquare(i) {
+    return <Square value={this.props.squares[i]} onClick={() => this.props.handleClick(i)} />
+  }
+
+  render() {
+
+
+    return (
+      <div>
+        {/* <div id="header">
+          <h1 className="h1">{status}</h1>
+        </div> */}
+        {/* <div> */}
+        <div>
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div>
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div>
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+        {/* </div> */}
+      </div>
+    )
+  }
+}
+
+class Game extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       squares: Array(9).fill(null),
       xIsNext: true,
@@ -65,10 +101,6 @@ class Board extends React.Component {
     })
   }
 
-  renderSquare(i) {
-    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />
-  }
-
   render() {
     const winner = calculateWinner(this.state.squares);
     const isTied = isGameTied(this.state.squares);
@@ -85,41 +117,22 @@ class Board extends React.Component {
 
     return (
       <div>
-        <div id="header">
-          <h1>{status}</h1>
+        <div>
+          <div className="h1">{status}</div>
         </div>
-      <Container>
-        {/* <Alert className="alert" variant="info">{status}</Alert>
-         */}
-        <Row>
-          <Col>
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </Col>
-        </Row>
-        </Container>
+        <div id="board">
+          <Board
+            squares={this.state.squares}
+            handleClick={(i) => this.handleClick(i)}
+          />
+        </div>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Board />,
+  <Game />,
   document.getElementById('root')
 );
 

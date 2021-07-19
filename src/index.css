@@ -23,29 +23,36 @@ code {
 }
 
 #header{
-  margin: 25px;
+  margin: 250px;
 }
 
-h1{
+.h1{
+  font-size: 35px;
   text-align: center;
   border-radius: 3px;
-  padding: 10px 5px;
+  padding: 20px 40px;
+  width: 250px;
+  margin-bottom: 25px;
   border: 2px solid aliceblue;
   color: aliceblue;
 }
 
 .square{
   cursor: pointer;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   width: 80px;
   height: 80px;
   border: 2px solid black;
   margin: 3px;
-  float: right;
-  background-color: #DCCBED;
+  float: left;
+  background-color: #FF8EA3;
   color: black;
   font-size: 30px;
   font-weight: bold;
+}
+
+#board{
+  margin-left: 36px;
 }
 
 .square:hover{
