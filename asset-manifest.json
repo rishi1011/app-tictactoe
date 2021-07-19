@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/app-tictactoe/static/css/main.03b0efa7.chunk.css",
-    "main.js": "/app-tictactoe/static/js/main.e31fd891.chunk.js",
-    "main.js.map": "/app-tictactoe/static/js/main.e31fd891.chunk.js.map",
-    "runtime-main.js": "/app-tictactoe/static/js/runtime-main.b2fb31c6.js",
-    "runtime-main.js.map": "/app-tictactoe/static/js/runtime-main.b2fb31c6.js.map",
-    "static/js/2.3eef279b.chunk.js": "/app-tictactoe/static/js/2.3eef279b.chunk.js",
-    "static/js/2.3eef279b.chunk.js.map": "/app-tictactoe/static/js/2.3eef279b.chunk.js.map",
-    "static/js/3.8f56a6fd.chunk.js": "/app-tictactoe/static/js/3.8f56a6fd.chunk.js",
-    "static/js/3.8f56a6fd.chunk.js.map": "/app-tictactoe/static/js/3.8f56a6fd.chunk.js.map",
+    "main.css": "/app-tictactoe/static/css/main.493063eb.chunk.css",
+    "main.js": "/app-tictactoe/static/js/main.436aa99d.chunk.js",
+    "main.js.map": "/app-tictactoe/static/js/main.436aa99d.chunk.js.map",
+    "runtime-main.js": "/app-tictactoe/static/js/runtime-main.ee2e380e.js",
+    "runtime-main.js.map": "/app-tictactoe/static/js/runtime-main.ee2e380e.js.map",
+    "static/css/2.4be38407.chunk.css": "/app-tictactoe/static/css/2.4be38407.chunk.css",
+    "static/js/2.7f9056f3.chunk.js": "/app-tictactoe/static/js/2.7f9056f3.chunk.js",
+    "static/js/2.7f9056f3.chunk.js.map": "/app-tictactoe/static/js/2.7f9056f3.chunk.js.map",
+    "static/js/3.cb9885b9.chunk.js": "/app-tictactoe/static/js/3.cb9885b9.chunk.js",
+    "static/js/3.cb9885b9.chunk.js.map": "/app-tictactoe/static/js/3.cb9885b9.chunk.js.map",
     "index.html": "/app-tictactoe/index.html",
-    "static/css/main.03b0efa7.chunk.css.map": "/app-tictactoe/static/css/main.03b0efa7.chunk.css.map",
-    "static/js/2.3eef279b.chunk.js.LICENSE.txt": "/app-tictactoe/static/js/2.3eef279b.chunk.js.LICENSE.txt"
+    "static/css/2.4be38407.chunk.css.map": "/app-tictactoe/static/css/2.4be38407.chunk.css.map",
+    "static/css/main.493063eb.chunk.css.map": "/app-tictactoe/static/css/main.493063eb.chunk.css.map",
+    "static/js/2.7f9056f3.chunk.js.LICENSE.txt": "/app-tictactoe/static/js/2.7f9056f3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.b2fb31c6.js",
-    "static/js/2.3eef279b.chunk.js",
-    "static/css/main.03b0efa7.chunk.css",
-    "static/js/main.e31fd891.chunk.js"
+    "static/js/runtime-main.ee2e380e.js",
+    "static/css/2.4be38407.chunk.css",
+    "static/js/2.7f9056f3.chunk.js",
+    "static/css/main.493063eb.chunk.css",
+    "static/js/main.436aa99d.chunk.js"
   ]
 }
