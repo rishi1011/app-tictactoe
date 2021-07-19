@@ -14,7 +14,7 @@ body {
   justify-content: center;
   height: 100vh;
   width:  100vw;
-  background: linear-gradient(45deg, #F07BBB, #9979C1);
+  background: linear-gradient(45deg,  #9979C1,#F07BBB);
 }
 
 code {
@@ -39,7 +39,6 @@ code {
 
 .square{
   cursor: pointer;
-  /* border-radius: 3px; */
   width: 80px;
   height: 80px;
   border: 2px solid black;
@@ -52,12 +51,31 @@ code {
 }
 
 #board{
+  /* border: 10px solid black; */
+  height: 280px;
   margin-left: 36px;
 }
 
 .square:hover{
   border: 2px solid aliceblue;
   color: #fff;
+}
+
+.footer{
+  /* border: 1px solid black; */
+  width: 333px;
+  text-align: center;
+}
+
+.btn{
+  margin: 20px 40px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
+  background-color: #e47cb8;
+  color:aliceblue;
 }
 
 

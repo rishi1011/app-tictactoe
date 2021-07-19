@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+
 const calculateWinner = (squares) => {
   console.log(squares)
   const lines = [
@@ -101,6 +102,13 @@ class Game extends React.Component {
     })
   }
 
+  reset() {
+    this.setState({
+      squares: Array(9).fill(null),
+      xIsNext: true,
+    })
+  }
+
   render() {
     const winner = calculateWinner(this.state.squares);
     const isTied = isGameTied(this.state.squares);
@@ -125,6 +133,9 @@ class Game extends React.Component {
             squares={this.state.squares}
             handleClick={(i) => this.handleClick(i)}
           />
+        </div>
+        <div className="footer">
+          <button className="btn" onClick={() => this.reset()} >Reset</button>
         </div>
       </div>
     )
