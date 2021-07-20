@@ -22,39 +22,55 @@ code {
     monospace;
 }
 
-#header{
-  margin: 250px;
-}
-
 .h1{
   font-size: 35px;
   text-align: center;
   border-radius: 3px;
   padding: 20px 40px;
-  width: 250px;
+  width: 237px;
   margin-bottom: 25px;
   border: 2px solid aliceblue;
   color: aliceblue;
 }
+
+/* #container{
+  border: 2px solid black;
+} */
 
 .square{
   cursor: pointer;
   width: 80px;
   height: 80px;
   border: 2px solid black;
-  margin: 3px;
-  float: left;
+  /* margin: 3px; */
+  /* float: left; */
   background-color: #FF8EA3;
   color: black;
   font-size: 30px;
   font-weight: bold;
+  /* padding: 0; */
+  margin: 0;
 }
 
-#board{
-  /* border: 10px solid black; */
-  height: 280px;
-  margin-left: 36px;
+
+#board{ 
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: center;
+  /* height: 280px; */
+  /* margin-left: 36px; */
+ }
+
+#grid  {
+  /* border: 2px solid black; */
+  /* margin-left: 15px; */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 8px; 
+  row-gap: 8px; 
 }
+
+
 
 .square:hover{
   border: 2px solid aliceblue;

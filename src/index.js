@@ -55,26 +55,26 @@ class Board extends React.Component {
 
 
     return (
-      <div>
+      <div id="grid">
         {/* <div id="header">
           <h1 className="h1">{status}</h1>
         </div> */}
         {/* <div> */}
-        <div>
+        {/* <div> */}
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
-        </div>
-        <div>
+        {/* </div> */}
+        {/* <div> */}
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
-        </div>
-        <div>
+        {/* </div> */}
+        {/* <div> */}
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
-        </div>
+        {/* </div> */}
         {/* </div> */}
       </div>
     )
@@ -128,12 +128,14 @@ class Game extends React.Component {
         <div>
           <div className="h1">{status}</div>
         </div>
-        <div id="board">
+        {/* <div id="container"> */}
+          <div id="board">
           <Board
             squares={this.state.squares}
             handleClick={(i) => this.handleClick(i)}
           />
-        </div>
+          </div>
+        {/* </div> */}
         <div className="footer">
           <button className="btn" onClick={() => this.reset()} >Reset</button>
         </div>
