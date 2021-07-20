@@ -1,3 +1,41 @@
+# A simple tic tac toe game, created from react and plain css.
+# Table of Contents
+1. Running locally
+2. Tech stack
+3. Mockups
+
+# Running locally
+1. Clone the repo
+2. cd app-tictactoe
+3. npm start
+
+# Tech stack
+1. react.js
+2. github pages
+
+# Mockups
+1. Initial state
+<img width="1792" alt="Screenshot 2021-07-19 at 11 10 55 PM" src="https://user-images.githubusercontent.com/47945265/126203192-cadb4997-5654-4a77-9882-23ab9acf2f76.png">
+
+2. Final result
+<img width="1792" alt="Screenshot 2021-07-19 at 11 15 12 PM" src="https://user-images.githubusercontent.com/47945265/126203658-25221528-c6da-433f-88a6-7f3c1ad50fff.png">
+
+<img width="1792" alt="Screenshot 2021-07-19 at 11 14 38 PM" src="https://user-images.githubusercontent.com/47945265/126203583-8cb4f9ab-68a4-401a-8d03-4535ac84a51d.png">
+
+3. After reset
+<img width="1792" alt="Screenshot 2021-07-19 at 11 15 48 PM" src="https://user-images.githubusercontent.com/47945265/126203739-80958cb6-2e20-4043-a13f-0dee34bea35c.png">
+
+# Design
+ p1: {
+        1: '#01020a',
+        2: '#801805',
+        3: '#ff2e00',
+        4: '#fea82f',
+        5: '#fffecb',
+        }
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
