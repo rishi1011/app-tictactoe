@@ -23,12 +23,14 @@ code {
 }
 
 .h1{
-  font-size: 35px;
+  font-size: 20px;
   text-align: center;
   border-radius: 3px;
-  padding: 20px 40px;
-  width: 237px;
-  margin-bottom: 25px;
+  /* padding: 20px 40px; */
+  /* width: 100%; */
+  padding-top: 10px;
+  height: 40px;
+  margin-bottom: 15px;
   border: 2px solid aliceblue;
   color: aliceblue;
 }
@@ -79,7 +81,7 @@ code {
 
 .footer{
   /* border: 1px solid black; */
-  width: 333px;
+  width: 100%;
   text-align: center;
 }
 
