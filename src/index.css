@@ -1,6 +1,6 @@
-/* *{
+*{
   outline: 1px solid red; 
-} */
+}
 
 body {
   /* margin: 0; */
@@ -35,9 +35,10 @@ code {
   color: aliceblue;
 }
 
-/* #container{
-  border: 2px solid black;
-} */
+#container{
+  /* border: 2px solid black; */
+  display: flex;
+}
 
 .square{
   cursor: pointer;
@@ -53,6 +54,11 @@ code {
   /* padding: 0; */
   margin: 0;
 }
+
+/* #side-bar{
+  margin-left: 20px;
+
+} */
 
 
 #board{ 
@@ -91,9 +97,15 @@ code {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 20px;
   background-color: #e47cb8;
   color:aliceblue;
+}
+
+.step-btn{
+  cursor: pointer;
+  padding: 10px 20px;
+  
 }
 
 
