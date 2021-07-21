@@ -198,27 +198,27 @@ class Game extends React.Component {
     return (
       <div id="main-container">
         <div id="content">
-        <div id="container1">
-          <div id="header">
-            <div>
-              <div className="h1">{status}</div>
+          <div id="container1">
+            <div id="header">
+              <div>
+                <div className="h1">{status}</div>
+              </div>
+            </div>
+            <div id="location">{`[${location[0]}] [${location[1]}]`}
+            </div>
+            <div id="board">
+              <Board
+                squares={current.squares}
+                handleClick={(i) => this.handleClick(i)}
+              />
             </div>
           </div>
-          <div id="location">{`${location[0]}, ${location[1]}`}
+          <div id="container2">
+            <div className="side-h1">Moves</div>
+            <div id="side-bar">
+              <ol>{moves}</ol>
+            </div>
           </div>
-          <div id="board">
-            <Board
-              squares={current.squares}
-              handleClick={(i) => this.handleClick(i)}
-            />
-          </div>
-        </div>
-        <div id="container2">
-          <div className="side-h1">Moves</div>
-          <div id="side-bar">
-            <ol>{moves}</ol>
-          </div>
-        </div>
         </div>
         <div className="footer">
           <button className="btn" onClick={() => this.reset()} >Reset</button>
