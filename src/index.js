@@ -6,6 +6,13 @@ import reportWebVitals from './reportWebVitals';
 
 const calculateWinner = (squares) => {
   // console.log(squares)
+  const result = [];
+
+  for (let i = 0; i < squares.length; i++) {
+    for (let j = 0; j < squares[i].length; j++) {
+      result.push(squares[i][j])
+    }
+  }
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -19,8 +26,8 @@ const calculateWinner = (squares) => {
 
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+    if (result[a] && result[a] === result[b] && result[a] === result[c]) {
+      return result[a];
     }
   }
   return null;
@@ -28,36 +35,41 @@ const calculateWinner = (squares) => {
 
 const isGameTied = (squares) => {
   for (let i = 0; i < squares.length; i++) {
-    if (squares[i] === null) {
-      return false;
+    for (let j = 0; j < squares[i].length; j++) {
+      if (squares[i][j] === null) {
+        return false;
+      }
     }
   }
   return true;
 }
 
-const findLocation = (i) => {
-  if (i === 0 || i === 1 || i === 2) {
-    const location = [0, i - 0]
-    return location;
-  } else if (i === 3 || i === 4 || i === 5) {
-    const location = [1, i - 3]
-    return location;
-  } else {
-    const location = [2, i - 6];
-    return location;
-  }
-}
+// const findLocation = (i) => {
+//   if (i === 0 || i === 1 || i === 2) {
+//     const location = [0, i - 0]
+//     return location;
+//   } else if (i === 3 || i === 4 || i === 5) {
+//     const location = [1, i - 3]
+//     return location;
+//   } else {
+//     const location = [2, i - 6];
+//     return location;
+//   }
+// }
 
 const differenceBetween = (i, j, history) => {
   // console.log(i, j, history);
   const squaresOne = history[i].squares;
   const squaresTwo = history[j].squares;
-  console.log(squaresOne, squaresTwo);
+  console.log("hi", squaresOne, squaresTwo);
   for (let k = 0; k < squaresOne.length; k++) {
-    if (squaresOne[k] !== squaresTwo[k]) {
-      return k;
+    for (let l = 0; l < squaresTwo.length; l++) {
+      if (squaresOne[k][l] !== squaresTwo[k][l]) {
+        return [k, l];
+      }
     }
   }
+  return [0, 0]
 }
 
 const Square = (props) => {
@@ -68,36 +80,25 @@ const Square = (props) => {
 
 class Board extends React.Component {
 
-  renderSquare(i) {
-    return <Square value={this.props.squares[i]} onClick={() => this.props.handleClick(i)} />
+  renderSquare(i, j) {
+    return <Square value={this.props.squares[i][j]} onClick={() => this.props.handleClick(i, j)} />
   }
 
   render() {
 
+    const res = []
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        res.push([i, j]);
+      }
+    }
+
+    let result = res.map((item, i) => {
+      return this.renderSquare(item[0], item[1]);
+    })
 
     return (
-      <div id="grid">
-        {/* <div id="header">
-          <h1 className="h1">{status}</h1>
-        </div> */}
-        {/* <div> */}
-        {/* <div> */}
-        {this.renderSquare(0)}
-        {this.renderSquare(1)}
-        {this.renderSquare(2)}
-        {/* </div> */}
-        {/* <div> */}
-        {this.renderSquare(3)}
-        {this.renderSquare(4)}
-        {this.renderSquare(5)}
-        {/* </div> */}
-        {/* <div> */}
-        {this.renderSquare(6)}
-        {this.renderSquare(7)}
-        {this.renderSquare(8)}
-        {/* </div> */}
-        {/* </div> */}
-      </div>
+      <div id="grid">{result}</div>
     )
   }
 }
@@ -107,7 +108,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       history: [{
-        squares: Array(9).fill(null),
+        squares: Array(3).fill(0).map(x => Array(3).fill(null)),
       }],
       stepNumber: 0,
       location: [0, 0],
@@ -115,22 +116,23 @@ class Game extends React.Component {
     }
   }
 
-  handleClick(i) {
+  handleClick(i, j) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
-    const squaresCopy = current.squares.slice();
-    if (calculateWinner(squaresCopy) || squaresCopy[i]) {
+    const squaresCopy = Array(3).fill(0).map((x, idx) => {
+      return current.squares[idx].slice()
+    })
+    if (calculateWinner(squaresCopy) || squaresCopy[i][j]) {
       return;
     }
-    squaresCopy[i] = this.state.xIsNext ? 'X' : 'O';
-    const currentLocation = findLocation(i);
-    // console.log(squaresCopy);
+    squaresCopy[i][j] = this.state.xIsNext ? 'X' : 'O';
+    // const currentLocation = findLocation(i);
     this.setState({
       history: history.concat([{
         squares: squaresCopy,
       }]),
       stepNumber: this.state.stepNumber + 1,
-      location: currentLocation,
+      location: [i, j],
       xIsNext: !this.state.xIsNext,
     })
   }
@@ -138,7 +140,7 @@ class Game extends React.Component {
   reset() {
     this.setState({
       history: [{
-        squares: Array(9).fill(null),
+        squares: Array(3).fill(0).map(x => Array(3).fill(null)),
       }],
       stepNumber: 0,
       location: [0, 0],
@@ -156,8 +158,8 @@ class Game extends React.Component {
         xIsNext: i % 2 === 0 ? true : false,
       })
     } else {
-      const index = differenceBetween(i, i - 1, history);
-      const currentLocation = findLocation(index);
+      const currentLocation = differenceBetween(i, i - 1, history);
+      // const currentLocation = findLocation(index);
       this.setState({
         stepNumber: i,
         location: currentLocation,
@@ -169,7 +171,6 @@ class Game extends React.Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    // console.log(this.state.stepNumber)
     const winner = calculateWinner(current.squares);
     const isTied = isGameTied(current.squares);
 
@@ -209,7 +210,7 @@ class Game extends React.Component {
             <div id="board">
               <Board
                 squares={current.squares}
-                handleClick={(i) => this.handleClick(i)}
+                handleClick={(i, j) => this.handleClick(i, j)}
               />
             </div>
           </div>

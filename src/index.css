@@ -82,7 +82,8 @@ code {
   flex-direction: column-reverse; */
   margin-left: 20px;
   height: 280px;
-  overflow-x: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #side-bar > ol {
@@ -100,8 +101,6 @@ code {
   column-gap: 8px; 
   row-gap: 8px; 
 }
-
-
 
 .square:hover{
   border: 2px solid aliceblue;
@@ -130,7 +129,7 @@ code {
   width: 120px;
   padding: 10px 20px;
   margin: 10px;
-  font-size: 12px;
+  font-size: 13px;
   border: 0.1px solid black;
   background-color: #e47cb8;
   color: aliceblue;
@@ -138,7 +137,7 @@ code {
 }
 
 .step-btn:focus{
-  border: 0.3px solid aliceblue;
+  border: 2px solid aliceblue;
 }
 
 
