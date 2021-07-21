@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 
 const calculateWinner = (squares) => {
-  console.log(squares)
+  // console.log(squares)
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -33,6 +33,31 @@ const isGameTied = (squares) => {
     }
   }
   return true;
+}
+
+const findLocation = (i) => {
+  if (i === 0 || i === 1 || i === 2) {
+    const location = [0, i - 0]
+    return location;
+  } else if (i === 3 || i === 4 || i === 5) {
+    const location = [1, i - 3]
+    return location;
+  } else {
+    const location = [2, i - 6];
+    return location;
+  }
+}
+
+const differenceBetween = (i, j, history) => {
+  // console.log(i, j, history);
+  const squaresOne = history[i].squares;
+  const squaresTwo = history[j].squares;
+  console.log(squaresOne, squaresTwo);
+  for (let k = 0; k < squaresOne.length; k++) {
+    if (squaresOne[k] !== squaresTwo[k]) {
+      return k;
+    }
+  }
 }
 
 const Square = (props) => {
@@ -85,6 +110,7 @@ class Game extends React.Component {
         squares: Array(9).fill(null),
       }],
       stepNumber: 0,
+      location: [0, 0],
       xIsNext: true,
     }
   }
@@ -97,12 +123,14 @@ class Game extends React.Component {
       return;
     }
     squaresCopy[i] = this.state.xIsNext ? 'X' : 'O';
-    console.log(squaresCopy);
+    const currentLocation = findLocation(i);
+    // console.log(squaresCopy);
     this.setState({
       history: history.concat([{
         squares: squaresCopy,
       }]),
       stepNumber: this.state.stepNumber + 1,
+      location: currentLocation,
       xIsNext: !this.state.xIsNext,
     })
   }
@@ -113,21 +141,35 @@ class Game extends React.Component {
         squares: Array(9).fill(null),
       }],
       stepNumber: 0,
+      location: [0, 0],
       xIsNext: true,
     })
   }
 
   jumpTo(i) {
-    this.setState({
-      stepNumber: i,
-      xIsNext: i % 2 === 0 ? true : false,
-    })
+    const history = this.state.history.slice();
+    if (i === 0) {
+      const currentLocation = [0, 0]
+      this.setState({
+        stepNumber: i,
+        location: currentLocation,
+        xIsNext: i % 2 === 0 ? true : false,
+      })
+    } else {
+      const index = differenceBetween(i, i - 1, history);
+      const currentLocation = findLocation(index);
+      this.setState({
+        stepNumber: i,
+        location: currentLocation,
+        xIsNext: i % 2 === 0 ? true : false,
+      })
+    }
   }
 
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    console.log(this.state.stepNumber)
+    // console.log(this.state.stepNumber)
     const winner = calculateWinner(current.squares);
     const isTied = isGameTied(current.squares);
 
@@ -143,7 +185,7 @@ class Game extends React.Component {
 
     let moves = history.map((item, i) => {
 
-      const desc = i === 0 ? "Go to start" : "Go to step" + i;
+      const desc = i === 0 ? "Go to start" : "Go to step " + i;
 
       return <li key={i}>
         <button className="step-btn" onClick={() => this.jumpTo(i)}>{desc}</button>
@@ -151,22 +193,32 @@ class Game extends React.Component {
       </li>
     });
 
+    const location = this.state.location;
+
     return (
-      <div>
-        <div id="header">
-          <div className="h1">{status}</div>
-          <div className="side-h1">Moves</div>
-        </div>
-        <div id="container">
+      <div id="main-container">
+        <div id="content">
+        <div id="container1">
+          <div id="header">
+            <div>
+              <div className="h1">{status}</div>
+            </div>
+          </div>
+          <div id="location">{`${location[0]}, ${location[1]}`}
+          </div>
           <div id="board">
             <Board
               squares={current.squares}
               handleClick={(i) => this.handleClick(i)}
             />
           </div>
+        </div>
+        <div id="container2">
+          <div className="side-h1">Moves</div>
           <div id="side-bar">
             <ol>{moves}</ol>
           </div>
+        </div>
         </div>
         <div className="footer">
           <button className="btn" onClick={() => this.reset()} >Reset</button>

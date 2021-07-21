@@ -21,6 +21,10 @@ code {
     monospace;
 }
 
+#content{
+  display: flex;
+}
+
 #header{
   display: flex;
 }
@@ -32,7 +36,6 @@ code {
   width: 253px;
   padding-top: 10px;
   height: 40px;
-  margin-bottom: 15px;
   border: 2px solid aliceblue;
   color: aliceblue;
 }
@@ -42,15 +45,18 @@ code {
   text-align: center;
   border: 2px solid aliceblue;
   border-radius: 5px;
-  margin-bottom: 15px;
   width: 175px;
   color:aliceblue;
   padding-top: 10px;
+  height: 40px;
   margin-left: 20px;
 }
 
-#container{
-  display: flex;
+
+#location{
+  padding: 3px;
+  width: 250px;
+  text-align: center;
 }
 
 .square{
@@ -58,6 +64,7 @@ code {
   width: 80px;
   height: 80px;
   border: 2px solid black;
+  border-radius: 3px;
   background-color: #FF8EA3;
   color: black;
   font-size: 30px;
@@ -69,14 +76,13 @@ code {
   /* display: flex;
   flex-direction: column-reverse; */
   margin-left: 20px;
-  height: 261px;
+  height: 280px;
   overflow-x: scroll;
 }
 
 #side-bar > ol {
   margin: 0;
 }
-
 
 #board{ 
   display: flex;
@@ -111,7 +117,7 @@ code {
   font-size: 20px;
   background-color: #e47cb8;
   color:aliceblue;
-  border: 0.1px solid aliceblue;
+  border: 2px solid aliceblue;
 }
 
 .step-btn{
