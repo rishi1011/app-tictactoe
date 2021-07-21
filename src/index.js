@@ -42,10 +42,6 @@ const Square = (props) => {
 }
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
 
   renderSquare(i) {
     return <Square value={this.props.squares[i]} onClick={() => this.props.handleClick(i)} />
@@ -157,8 +153,9 @@ class Game extends React.Component {
 
     return (
       <div>
-        <div>
+        <div id="header">
           <div className="h1">{status}</div>
+          <div className="side-h1">Moves</div>
         </div>
         <div id="container">
           <div id="board">
