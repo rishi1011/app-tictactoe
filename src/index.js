@@ -5,7 +5,6 @@ import reportWebVitals from './reportWebVitals';
 
 
 const calculateWinner = (squares) => {
-  // console.log(squares)
   const result = [];
 
   for (let i = 0; i < squares.length; i++) {
@@ -27,7 +26,17 @@ const calculateWinner = (squares) => {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (result[a] && result[a] === result[b] && result[a] === result[c]) {
-      return result[a];
+      const res = []
+      const aArr = findLocation(a)
+      res.push(aArr);
+      const bArr = findLocation(b)
+      res.push(bArr);
+      const cArr = findLocation(c)
+      res.push(cArr);
+      return {
+        winner: result[a],
+        winnerIdxs: res,
+      };
     }
   }
   return null;
@@ -44,24 +53,19 @@ const isGameTied = (squares) => {
   return true;
 }
 
-// const findLocation = (i) => {
-//   if (i === 0 || i === 1 || i === 2) {
-//     const location = [0, i - 0]
-//     return location;
-//   } else if (i === 3 || i === 4 || i === 5) {
-//     const location = [1, i - 3]
-//     return location;
-//   } else {
-//     const location = [2, i - 6];
-//     return location;
-//   }
-// }
+const findLocation = (loc) => {
+  if (loc >= 0 && loc <= 2) {
+    return [0, loc - 0]
+  } else if (loc >= 3 && loc <= 5) {
+    return [1, loc - 3]
+  } else {
+    return [2, loc - 6]
+  }
+}
 
 const differenceBetween = (i, j, history) => {
-  // console.log(i, j, history);
   const squaresOne = history[i].squares;
   const squaresTwo = history[j].squares;
-  console.log("hi", squaresOne, squaresTwo);
   for (let k = 0; k < squaresOne.length; k++) {
     for (let l = 0; l < squaresTwo.length; l++) {
       if (squaresOne[k][l] !== squaresTwo[k][l]) {
@@ -72,15 +76,39 @@ const differenceBetween = (i, j, history) => {
   return [0, 0]
 }
 
+const doesContain = (i, j, array) => {
+  for (let k = 0; k < array.length; k++){
+    const temp = array[k];
+    if (temp[0] === i && temp[1] === j) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const Square = (props) => {
   return (
     <button className="square" onClick={props.onClick}>{props.value}</button>
   );
 }
 
+const WinnerSquare = (props) => {
+  return (
+    <button className="square winner" onClick={props.onClick}>{props.value}</button>
+  );
+}
+
 class Board extends React.Component {
 
   renderSquare(i, j) {
+    const array = this.props.winnerIdxs;
+
+    const winnerSquare = doesContain(i, j, array);
+    console.log(winnerSquare);
+
+    if (winnerSquare) {
+      return <WinnerSquare value={this.props.squares[i][j]} onClick={() => this.props.handleClick(i, j)} />
+    }
     return <Square value={this.props.squares[i][j]} onClick={() => this.props.handleClick(i, j)} />
   }
 
@@ -122,7 +150,17 @@ class Game extends React.Component {
     const squaresCopy = Array(3).fill(0).map((x, idx) => {
       return current.squares[idx].slice()
     })
-    if (calculateWinner(squaresCopy) || squaresCopy[i][j]) {
+
+    const winnerObj = calculateWinner(squaresCopy);
+
+    let winner;
+    if (winnerObj !== null) {
+      winner = winnerObj.winner;
+    } else {
+      winner = null;
+    }
+
+    if (winner || squaresCopy[i][j]) {
       return;
     }
     squaresCopy[i][j] = this.state.xIsNext ? 'X' : 'O';
@@ -171,12 +209,23 @@ class Game extends React.Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const winnerObj = calculateWinner(current.squares);
+
+    let winner;
+    if (winnerObj !== null) {
+      winner = winnerObj.winner;
+    } else {
+      winner = null;
+    }
+
     const isTied = isGameTied(current.squares);
 
     let status;
+    let winnerIdxs = [];
     if (winner) {
       status = "Winner " + winner;
+      winnerIdxs = winnerObj.winnerIdxs;
+      console.log(winnerIdxs);
     } else if (isTied) {
       status = "Game Tied";
     }
@@ -209,6 +258,7 @@ class Game extends React.Component {
             </div>
             <div id="board">
               <Board
+                winnerIdxs={winnerIdxs}
                 squares={current.squares}
                 handleClick={(i, j) => this.handleClick(i, j)}
               />
