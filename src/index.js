@@ -266,6 +266,12 @@ class Game extends React.Component {
           </div>
           <div id="container2">
             <div className="side-h1">Moves</div>
+            <div id="sort-area">
+              <label className="switch">
+                <input type="checkbox"></input>
+                <span className="slider"></span>
+              </label>
+            </div>
             <div id="side-bar">
               <ol>{moves}</ol>
             </div>

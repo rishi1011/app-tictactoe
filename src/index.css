@@ -45,19 +45,6 @@ code {
   color: aliceblue;
 }
 
-.side-h1{
-  font-size: 20px;
-  text-align: center;
-  border: 2px solid aliceblue;
-  border-radius: 5px;
-  width: 175px;
-  color:aliceblue;
-  padding-top: 10px;
-  height: 40px;
-  margin-left: 20px;
-}
-
-
 #location{
   padding: 3px;
   width: 250px;
@@ -79,6 +66,70 @@ code {
 
 .winner{
   border: 2px solid aliceblue;
+}
+
+.side-h1{
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid aliceblue;
+  border-radius: 5px;
+  width: 175px;
+  color:aliceblue;
+  padding-top: 10px;
+  height: 40px;
+  margin-left: 20px;
+}
+
+#sort-area{
+  padding: 3px;
+  text-align: end;
+}
+
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 38px;
+}
+
+.switch > input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.slider{
+  cursor: pointer;
+  position: absolute;
+  background-color: #ccc;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 15px;
+  transition: .4s;
+}
+
+.slider::before{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 2px;
+  background-color: aliceblue;
+  height: 7px;
+  width: 7px;
+  left: 6px;
+  bottom: 3px;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+input:checked + .slider::before {
+  transform: translateX(15px);
 }
 
 #side-bar{
