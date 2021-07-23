@@ -104,7 +104,7 @@ class Board extends React.Component {
     const array = this.props.winnerIdxs;
 
     const winnerSquare = doesContain(i, j, array);
-    console.log(winnerSquare);
+    // console.log(winnerSquare);
 
     if (winnerSquare) {
       return <WinnerSquare value={this.props.squares[i][j]} onClick={() => this.props.handleClick(i, j)} />
@@ -140,6 +140,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       location: [0, 0],
+      reverse: false,
       xIsNext: true,
     }
   }
@@ -182,6 +183,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       location: [0, 0],
+      reverse: false,
       xIsNext: true,
     })
   }
@@ -204,6 +206,12 @@ class Game extends React.Component {
         xIsNext: i % 2 === 0 ? true : false,
       })
     }
+  }
+
+  sortList() {
+    this.setState({
+      reverse: !this.state.reverse,
+    })
   }
 
   render() {
@@ -234,6 +242,12 @@ class Game extends React.Component {
     }
 
     let moves = history.map((item, i) => {
+
+      const reverse = this.state.reverse;
+
+      if (reverse) {
+        i = history.length - i - 1;
+      }
 
       const desc = i === 0 ? "Go to start" : "Go to step " + i;
 
@@ -269,7 +283,8 @@ class Game extends React.Component {
             <div id="sort-area">
               <label className="switch">
                 <input type="checkbox"></input>
-                <span className="slider"></span>
+                <span onClick={() => this.sortList(moves)} className="slider"></span>
+                {/* <button className="temp" onClick = {() => this.sortList(moves)}></button> */}
               </label>
             </div>
             <div id="side-bar">
