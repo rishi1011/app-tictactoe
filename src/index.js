@@ -77,7 +77,7 @@ const differenceBetween = (i, j, history) => {
 }
 
 const doesContain = (i, j, array) => {
-  for (let k = 0; k < array.length; k++){
+  for (let k = 0; k < array.length; k++) {
     const temp = array[k];
     if (temp[0] === i && temp[1] === j) {
       return true;
@@ -86,9 +86,24 @@ const doesContain = (i, j, array) => {
   return false;
 }
 
+function removeClass() {
+  var elements = document.getElementsByClassName('square');
+  var element = elements[0];
+
+  element.classList.remove('hover');
+}
+
 const Square = (props) => {
+  const hover = props.hover;
+  console.log("hover",hover)
+
+  if (!hover) {
+    removeClass();
+  }
+
   return (
-    <button className="square" onClick={props.onClick}>{props.value}</button>
+    
+    <button className={"square hover"} onClick={props.onClick}>{props.value}</button>
   );
 }
 
@@ -103,13 +118,18 @@ class Board extends React.Component {
   renderSquare(i, j) {
     const array = this.props.winnerIdxs;
 
+    let hover = true;
+
+    if (JSON.stringify(array) !== JSON.stringify([])) {
+      hover = false;
+    }
+
     const winnerSquare = doesContain(i, j, array);
-    // console.log(winnerSquare);
 
     if (winnerSquare) {
       return <WinnerSquare value={this.props.squares[i][j]} onClick={() => this.props.handleClick(i, j)} />
     }
-    return <Square value={this.props.squares[i][j]} onClick={() => this.props.handleClick(i, j)} />
+    return <Square value={this.props.squares[i][j]} onClick={() => this.props.handleClick(i, j)} hover={hover} />
   }
 
   render() {
@@ -284,7 +304,6 @@ class Game extends React.Component {
               <label className="switch">
                 <input type="checkbox"></input>
                 <span onClick={() => this.sortList(moves)} className="slider"></span>
-                {/* <button className="temp" onClick = {() => this.sortList(moves)}></button> */}
               </label>
             </div>
             <div id="side-bar">

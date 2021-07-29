@@ -1,4 +1,6 @@
-# A simple tic tac toe game, created from react and plain css.
+# Tic Tac Toe 
+A simple tic tac toe game, created from react. The game entails two players, X and O, who take turns to mark spaces in a 3x3 grid. The player who succeeds in placing their marks in a diagonal, horizontal or vertical row is the winner.
+
 # Table of Contents
 1. Running locally
 2. Tech stack
@@ -15,25 +17,33 @@
 
 # Mockups
 1. Initial state
-<img width="1792" alt="Screenshot 2021-07-19 at 11 10 55 PM" src="https://user-images.githubusercontent.com/47945265/126203192-cadb4997-5654-4a77-9882-23ab9acf2f76.png">
+<img width="1792" alt="Screenshot 2021-07-29 at 11 33 29 PM" src="https://user-images.githubusercontent.com/47945265/127542701-357bc63a-7576-4371-a552-60195ef1cada.png">
 
 2. Final result
-<img width="1792" alt="Screenshot 2021-07-19 at 11 15 12 PM" src="https://user-images.githubusercontent.com/47945265/126203658-25221528-c6da-433f-88a6-7f3c1ad50fff.png">
-
-<img width="1792" alt="Screenshot 2021-07-19 at 11 14 38 PM" src="https://user-images.githubusercontent.com/47945265/126203583-8cb4f9ab-68a4-401a-8d03-4535ac84a51d.png">
+<img width="1792" alt="Screenshot 2021-07-29 at 9 35 00 PM" src="https://user-images.githubusercontent.com/47945265/127526310-a4a3fac9-3a99-4fe6-9795-357c025891ef.png">
+<img width="1792" alt="Screenshot 2021-07-29 at 11 29 14 PM" src="https://user-images.githubusercontent.com/47945265/127542076-86cd9870-c952-48d4-a3da-ed01a683f4bc.png">
+<img width="1792" alt="Screenshot 2021-07-29 at 11 30 54 PM" src="https://user-images.githubusercontent.com/47945265/127542319-4797a2c7-e6dd-481f-9e57-d1c11bddd525.png">
 
 3. After reset
-<img width="1792" alt="Screenshot 2021-07-19 at 11 15 48 PM" src="https://user-images.githubusercontent.com/47945265/126203739-80958cb6-2e20-4043-a13f-0dee34bea35c.png">
+<img width="1792" alt="Screenshot 2021-07-29 at 11 29 40 PM" src="https://user-images.githubusercontent.com/47945265/127542133-fb4ef977-ccb5-40ba-9887-3b6f135dd439.png">
+
+4. Travel history:
+The list of elements under moves represent your travel history. Clicking the button will take you to your respective move. This also ensures that if we “go back in time” and then make a new move from that point, we throw away all the “future” history that would now become incorrect.
+
+<img width="1792" alt="Screenshot 2021-07-29 at 11 37 06 PM" src="https://user-images.githubusercontent.com/47945265/127543187-6e753a8d-d31d-4b6a-998f-6aa424e8e6c5.png">
+<img width="1792" alt="Screenshot 2021-07-29 at 11 37 37 PM" src="https://user-images.githubusercontent.com/47945265/127543259-5c70d3b8-be45-4e7b-b265-345fa7e7e14e.png">
+<img width="1792" alt="Screenshot 2021-07-29 at 11 38 27 PM" src="https://user-images.githubusercontent.com/47945265/127543406-5bafba8e-39e4-44f5-961b-b9af849048ae.png">
+New move from step 3, "O", location [2][0],
+<img width="1792" alt="Screenshot 2021-07-29 at 11 38 55 PM" src="https://user-images.githubusercontent.com/47945265/127543481-11d2b506-0ff0-4268-b338-3080e2f81de1.png">
+
+5. Descending sort:
+The toggle button sorts the moves list descending when its enabled.
+<img width="1792" alt="Screenshot 2021-07-29 at 11 42 15 PM" src="https://user-images.githubusercontent.com/47945265/127543947-8f3b61a4-d0ed-4a39-9509-d58f850efcef.png">
+
+
 
 # Design
- p1: {
-        1: '#01020a',
-        2: '#801805',
-        3: '#ff2e00',
-        4: '#fea82f',
-        5: '#fffecb',
-        }
-
+![Screenshot 2021-07-29 at 11 56 40 PM](https://user-images.githubusercontent.com/47945265/127546108-fc7c30f9-befd-4af2-ada0-124e7103b09a.png)
 
 
 # Getting Started with Create React App
