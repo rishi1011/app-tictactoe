@@ -25,7 +25,7 @@ A simple tic tac toe game, created from react. The game entails two players, X a
 <img width="1792" alt="Screenshot 2021-07-29 at 11 30 54 PM" src="https://user-images.githubusercontent.com/47945265/127542319-4797a2c7-e6dd-481f-9e57-d1c11bddd525.png">
 
 3. After reset
-<img width="1792" alt="Screenshot 2021-07-29 at 11 29 40 PM" src="https://user-images.githubusercontent.com/47945265/127542133-fb4ef977-ccb5-40ba-9887-3b6f135dd439.png">
+<img width="1792" alt="Screenshot 2021-07-30 at 4 11 55 PM" src="https://user-images.githubusercontent.com/47945265/127641699-9df6e42e-af6a-4396-922c-1681148b2988.png">
 
 4. Travel history:
 The list of elements under moves represent your travel history. Clicking the button will take you to your respective move. This also ensures that if we “go back in time” and then make a new move from that point, we throw away all the “future” history that would now become incorrect.
