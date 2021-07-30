@@ -302,7 +302,7 @@ class Game extends React.Component {
             <div className="side-h1">Moves</div>
             <div id="sort-area">
               <label className="switch">
-                <input type="checkbox"></input>
+                <input type="checkbox" checked={this.state.reverse}></input>
                 <span onClick={() => this.sortList(moves)} className="slider"></span>
               </label>
             </div>
